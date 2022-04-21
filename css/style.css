@@ -13,25 +13,32 @@ body {
 }
 
 .navbar-container {
-    max-width: 950px;
+    max-width: 1152px;
     height: 50px;
     margin: 0 auto;
+    padding: 0 102px 0 100px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-sizing: border-box;
 }
 
-ul {
+.logo {
+    width: 89px;
+    height: 23px;
+}
+
+.list ul {
     padding: 0;
     list-style: none;
     display: flex;
 }
 
-ul li {
-    margin: 0 14px
+.list ul li {
+    margin: 0 20.5px;
 }
 
-ul li a {
+.list ul li a {
     font-size: 11px;
     font-weight: 500;
     line-height: 12.89px;
@@ -40,7 +47,7 @@ ul li a {
     color: #959BA4;
 }
 
-ul li a:hover {
+.list ul li a:hover {
     color: #000000;
     
 }
@@ -70,8 +77,10 @@ span {
 }
 
 .main-container {
-    max-width: 640px;
+    max-width: 1152px;
     margin: 0 auto;
+    padding: 0 258px 0 253px;
+    box-sizing: border-box;
 }
 
 h1 {
@@ -79,9 +88,86 @@ h1 {
     font-weight: 700;
     line-height: 42.19px;
     margin: 56px 0 33px;
-    padding: 0 35px;
 }
 
 .converter {
     display: flex;
+    justify-content: space-between;
+}
+
+.converter p{
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14px;
+    color: #9F9F9F;
+}
+
+.converter ul {
+    margin: 10px 0px;
+    padding: 0px;
+    border: 1px solid #E5E5E5;
+    border-radius: 3px;
+    display: flex;
+    list-style: none;
+}
+
+.converter ul li {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14px;
+    margin: 0;
+    padding: 10px 24px;
+    color: #C6C6C6;
+    cursor: pointer;
+    
+    border-right: 1px solid rgb(229, 229, 229);
+}
+
+.converter ul li:last-child {
+    border-right: none;
+}
+
+.converter .from .active {
+    color: #FFFFFF;
+    background-color: #833AE0;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.converter .to .active {
+    color: #FFFFFF;
+    background-color: #833AE0;
+}
+
+.converter .amountarea {
+    height: 102px;
+    padding: 11px 14px;
+    margin: 20px 0;
+    border: 1px solid #E5E5E5;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+.converter input {
+    width: 220px;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 42px;
+    border: none;
+}
+
+.converter input:focus {
+    outline: none;
+}
+
+.from {
+    
+    margin-right: 62px;
+    box-sizing: border-box;
+}
+
+.to {
+    
+    margin-left: 62px;
+    box-sizing: border-box;
 }
