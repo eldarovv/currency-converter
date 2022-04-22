@@ -148,12 +148,18 @@ h1 {
     box-sizing: border-box;
 }
 
+.converter .info {
+    margin: 20px 0 13px 0;
+    color: #C6C6C6;
+}
+
 .converter input {
     width: 220px;
     font-size: 36px;
     font-weight: 700;
     line-height: 42px;
     border: none;
+    font-family: 'Roboto', sans-serif;
 }
 
 .converter input:focus {
