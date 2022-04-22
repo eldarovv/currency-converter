@@ -30,8 +30,14 @@ ul[0].childNodes.forEach((element) => {
         fetch(`https://api.exchangerate.host/latest?base=${event.target.textContent}&symbols=${output.textContent}`)
             .then(response => response.json())
             .then((data) => {
-                input2.value = (event.target.textContent != output.textContent) ? Number(input1.value * data.rates[`${output.textContent}`]).toFixed(3) : input1.value * data.rates[`${output.textContent}`]
+                input2.value = (event.target.textContent != output.textContent) ? (input1.value * data.rates[`${output.textContent}`]).toFixed(3) : input1.value * data.rates[`${output.textContent}`]
                 info[0].textContent = `1 ${event.target.textContent} = ${data.rates[`${output.textContent}`]} ${output.textContent}`
+                //info[1].textContent = `1 ${output.textContent} = ${1/data.rates[`${output.textContent}`]} ${event.target.textContent}`
+            })
+        fetch(`https://api.exchangerate.host/latest?base=${output.textContent}&symbols=${event.target.textContent}`)
+            .then(response => response.json())
+            .then((data) => {
+                //info[0].textContent = `1 ${event.target.textContent} = ${data.rates[`${output.textContent}`]} ${output.textContent}`
                 info[1].textContent = `1 ${output.textContent} = ${data.rates[`${event.target.textContent}`]} ${event.target.textContent}`
             })
     })
@@ -53,15 +59,30 @@ ul[1].childNodes.forEach((element) => {
                 break
             default: break
         }
-
-        const  output =  ul[0].querySelector('.active')
-        fetch(`https://api.exchangerate.host/latest?base=${output.textContent}&symbols=${event.target.textContent}`)
+        const input = ul[0].querySelector('.active')
+        const output =  ul[1].querySelector('.active')
+        fetch(`https://api.exchangerate.host/latest?base=${input.textContent}&symbols=${output.textContent}`)
             .then(response => response.json())
             .then(data => {
-                input2.value = (event.target.textContent != output.textContent) ? Number(input1.value * data.rates[`${event.target.textContent}`]).toFixed(3) : input1.value * data.rates[`${event.target.textContent}`]
-                info[1].textContent = `1 ${event.target.textContent} = ${data.rates[`${output.textContent}`]}`
-
+                input2.value = (event.target.textContent != output.textContent) ? (input1.value * data.rates[`${output.textContent}`]).toFixed(3) : input1.value * data.rates[`${output.textContent}`]
+                // info[1].textContent = `1 ${output.textContent} = ${data.rates[`${output.textContent}`]} ${input.textContent}`
+                info[0].textContent = `1 ${input.textContent} = ${data.rates[`${output.textContent}`]} ${output.textContent}`
             })
-            
+        fetch(`https://api.exchangerate.host/latest?base=${output.textContent}&symbols=${input.textContent}`)
+            .then(response => response.json())
+            .then(data => {
+                info[1].textContent = `1 ${output.textContent} = ${data.rates[`${input.textContent}`]} ${input.textContent}`
+                //info[0].textContent = `1 ${output.textContent} = ${data.rates[`${output.textContent}`]} ${event.target.textContent}`
+            })    
     })
+})
+
+input1.addEventListener('keyup', (event) => {
+    const input = ul[0].querySelector('.active')
+    const output = ul[1].querySelector('.active')
+    fetch(`https://api.exchangerate.host/latest?base=${input.textContent}&symbols=${output.textContent}`)
+        .then(response => response.json())
+        .then((data) => {
+            input2.value = (input.textContent != output.textContent) ? (input1.value * data.rates[`${output.textContent}`]).toFixed(3) : input1.value * data.rates[`${output.textContent}`]
+            })
 })
